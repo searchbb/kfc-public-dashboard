@@ -1,45 +1,15 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="KFC 新闻资讯：面向团队的公开新闻快照。当前为虚构数据演示。">
-  <meta name="color-scheme" content="dark">
-  <title>KFC 新闻资讯 · 虚构数据演示</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237ae2ba'/%3E%3Cpath d='M17 16v32m29-32L18 33l28 15' stroke='%230b1719' stroke-width='7' fill='none'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=news2">
-  <script src="app.js?v=news2" defer></script>
-</head>
-<body>
-  <a class="skip" href="#main">跳转到新闻</a>
-  <header class="topbar shell">
-    <a class="brand" href="./" aria-label="KFC 新闻首页"><span class="logo">K</span><span>KFC <span class="brand-light">/ 新闻资讯</span></span></a>
-    <div class="topmeta"><span class="status-dot"></span> 团队共享 <span class="demo-label">DEMO · 虚构新闻</span></div>
-  </header>
-  <main id="main" class="shell">
-    <section class="hero">
-      <div><p class="eyebrow">PUBLIC NEWSROOM / TEAM EDITION</p><h1>值得关注的新闻，<br><span>与团队一起看。</span></h1><p class="intro">汇集新闻线索与主题摘要，让同事共享同一份资讯快照。</p></div>
-      <div class="snapshot"><span class="snapshot-icon" aria-hidden="true">↗</span><p class="eyebrow">SNAPSHOT TIME · UTC</p><time id="snapshot-time">正在加载…</time><p id="snapshot-id">—</p><div class="snapshot-rule"></div><p>目标更新间隔 <strong>10 分钟</strong><br><span class="muted">演示阶段 · 自动发布尚未启用</span></p></div>
-    </section>
-    <aside class="notice"><span class="notice-icon" aria-hidden="true">i</span><p><strong>这是虚构新闻演示。</strong> 所有新闻、机构及事件均为人工构造，仅用于验证公开新闻站点。</p><span class="notice-tag">DEMO ONLY</span></aside>
-    <section class="stats" aria-label="新闻快照概览">
-      <div><span class="stat-label">新闻样本</span><strong id="news-total">—</strong><small>NEWS ITEMS</small></div>
-      <div><span class="stat-label">新闻主题</span><strong id="topic-total">—</strong><small>NEWS TOPICS</small></div>
-      <div><span class="stat-label">最新样本 · UTC</span><strong id="latest-time" class="stat-time">—</strong><small>LATEST NEWS</small></div>
-      <div><span class="stat-label">数据模式</span><strong class="stat-text">静态</strong><small>FICTIONAL SNAPSHOT</small></div>
-    </section>
-    <section class="workspace" aria-label="新闻资讯">
-      <div class="section-heading"><div><p class="eyebrow">THE NEWS BRIEFING</p><h2>新闻速览</h2></div><p id="result-count" role="status" aria-live="polite">正在读取快照</p></div>
-      <div class="toolbar">
-        <div class="filters" role="group" aria-label="新闻主题筛选"><button class="active" type="button" data-category="all" aria-pressed="true">全部新闻</button><button type="button" data-category="AI" aria-pressed="false">人工智能</button><button type="button" data-category="半导体" aria-pressed="false">半导体</button><button type="button" data-category="能源" aria-pressed="false">能源</button></div>
-        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索新闻标题或来源" aria-label="搜索新闻标题或来源" autocomplete="off"></label>
-      </div>
-      <div id="load-error" class="empty" role="alert" hidden>新闻快照暂时无法加载，请刷新重试。</div>
-      <div id="news-list" class="news-grid"></div>
-    </section>
-    <section class="pipeline" aria-label="新闻发布方式"><span class="eyebrow">NEWS SNAPSHOTS</span><p>dot 生成新闻快照 <span>→</span> GitHub Pages <span>→</span> 同事共享阅读</p><small>当前为人工构造的新闻样本。后续发布已生成的公开新闻结果；页面只负责阅读与筛选。</small></section>
-  </main>
-  <footer class="shell"><span>KFC / PUBLIC NEWSROOM <span class="footer-divider">·</span> 新闻演示 v2</span><a href="https://github.com/searchbb/kfc-public-dashboard" target="_blank" rel="noopener noreferrer">查看新闻仓库 ↗</a></footer>
-  <noscript><p class="shell">请启用 JavaScript 以查看与筛选静态新闻快照。数据文件：<a href="data/snapshot.json">snapshot.json</a></p></noscript>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'" />
+    <title>KFC 文章处理工作台</title>
+    <script type="module" crossorigin src="/kfc-public-dashboard/assets/index-BX07WX0e.js"></script>
+    <link rel="stylesheet" crossorigin href="/kfc-public-dashboard/assets/index-D4Y69oVj.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
 </html>
+
