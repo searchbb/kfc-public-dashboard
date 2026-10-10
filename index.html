@@ -3,46 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="KFC 公开资讯看板 · 虚构数据演示。静态快照展示新闻与市场研究结果。">
+  <meta name="description" content="KFC 新闻资讯：面向团队的公开新闻快照。当前为虚构数据演示。">
   <meta name="color-scheme" content="dark">
-  <title>KFC 公开资讯看板 · 虚构数据演示</title>
+  <title>KFC 新闻资讯 · 虚构数据演示</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237ae2ba'/%3E%3Cpath d='M17 16v32m29-32L18 33l28 15' stroke='%230b1719' stroke-width='7' fill='none'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#main">跳转到内容</a>
+  <a class="skip" href="#main">跳转到新闻</a>
   <header class="topbar shell">
-    <a class="brand" href="./" aria-label="KFC 看板首页"><span class="logo">K</span><span>KFC <span class="brand-light">/ 公开资讯</span></span></a>
-    <div class="topmeta"><span class="status-dot"></span> 静态快照 <span class="demo-label">DEMO · 虚构数据</span></div>
+    <a class="brand" href="./" aria-label="KFC 新闻首页"><span class="logo">K</span><span>KFC <span class="brand-light">/ 新闻资讯</span></span></a>
+    <div class="topmeta"><span class="status-dot"></span> 团队共享 <span class="demo-label">DEMO · 虚构新闻</span></div>
   </header>
   <main id="main" class="shell">
     <section class="hero">
-      <div><p class="eyebrow">PUBLIC INTELLIGENCE / 001</p><h1>公开资讯，<br><span>一眼掌握。</span></h1><p class="intro">新闻线索与市场观察，汇成一份清晰的结果快照。</p></div>
+      <div><p class="eyebrow">PUBLIC NEWSROOM / TEAM EDITION</p><h1>值得关注的新闻，<br><span>与团队一起看。</span></h1><p class="intro">汇集新闻线索与主题摘要，让同事共享同一份资讯快照。</p></div>
       <div class="snapshot"><span class="snapshot-icon" aria-hidden="true">↗</span><p class="eyebrow">SNAPSHOT TIME · UTC</p><time id="snapshot-time">正在加载…</time><p id="snapshot-id">—</p><div class="snapshot-rule"></div><p>目标更新间隔 <strong>10 分钟</strong><br><span class="muted">演示阶段 · 自动发布尚未启用</span></p></div>
     </section>
-    <aside class="notice"><span class="notice-icon" aria-hidden="true">i</span><p><strong>这是虚构数据演示。</strong> 所有公司、代码、新闻及价格均为人工构造，不对应真实证券、行情或研究结论。</p><span class="notice-tag">DEMO ONLY</span></aside>
-    <section class="stats" aria-label="快照概览">
+    <aside class="notice"><span class="notice-icon" aria-hidden="true">i</span><p><strong>这是虚构新闻演示。</strong> 所有新闻、机构及事件均为人工构造，仅用于验证公开新闻站点。</p><span class="notice-tag">DEMO ONLY</span></aside>
+    <section class="stats" aria-label="新闻快照概览">
       <div><span class="stat-label">新闻样本</span><strong id="news-total">—</strong><small>NEWS ITEMS</small></div>
-      <div><span class="stat-label">市场样本</span><strong id="market-total">—</strong><small>MARKET SIGNALS</small></div>
-      <div><span class="stat-label">观察主题</span><strong>03</strong><small>RESEARCH THEMES</small></div>
+      <div><span class="stat-label">新闻主题</span><strong id="topic-total">—</strong><small>NEWS TOPICS</small></div>
+      <div><span class="stat-label">最新样本 · UTC</span><strong id="latest-time" class="stat-time">—</strong><small>LATEST NEWS</small></div>
       <div><span class="stat-label">数据模式</span><strong class="stat-text">静态</strong><small>FICTIONAL SNAPSHOT</small></div>
     </section>
-    <section class="workspace" aria-label="资讯与市场样本">
-      <div class="section-heading"><div><p class="eyebrow">THE DAILY VIEW</p><h2>资讯与观察</h2></div><p id="result-count" role="status" aria-live="polite">正在读取快照</p></div>
+    <section class="workspace" aria-label="新闻资讯">
+      <div class="section-heading"><div><p class="eyebrow">THE NEWS BRIEFING</p><h2>新闻速览</h2></div><p id="result-count" role="status" aria-live="polite">正在读取快照</p></div>
       <div class="toolbar">
-        <div class="filters" role="group" aria-label="主题筛选"><button class="active" type="button" data-category="all" aria-pressed="true">全部主题</button><button type="button" data-category="AI" aria-pressed="false">人工智能</button><button type="button" data-category="半导体" aria-pressed="false">半导体</button><button type="button" data-category="能源" aria-pressed="false">能源</button></div>
-        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索标题、公司或代码" aria-label="搜索标题、公司或代码" autocomplete="off"></label>
+        <div class="filters" role="group" aria-label="新闻主题筛选"><button class="active" type="button" data-category="all" aria-pressed="true">全部新闻</button><button type="button" data-category="AI" aria-pressed="false">人工智能</button><button type="button" data-category="半导体" aria-pressed="false">半导体</button><button type="button" data-category="能源" aria-pressed="false">能源</button></div>
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索新闻标题或来源" aria-label="搜索新闻标题或来源" autocomplete="off"></label>
       </div>
-      <div id="load-error" class="empty" role="alert" hidden>快照暂时无法加载，请刷新重试。</div>
-      <div class="columns">
-        <section class="news-column" aria-labelledby="news-heading"><div class="column-heading"><h3 id="news-heading">新闻速览 <span>NEWS BRIEFING</span></h3><span class="subtle">最新优先</span></div><div id="news-list"></div></section>
-        <aside class="market-column" aria-labelledby="market-heading"><div class="column-heading"><h3 id="market-heading">市场观察 <span>MARKET WATCH</span></h3></div><p class="market-caption">虚构单位价格 · 变化率仅用于展示</p><div id="market-list"></div><div class="research-note"><span class="eyebrow">HOW TO READ</span><h4>从信息到观察</h4><p>左侧浏览事件摘要，右侧查看对应主题的市场样本。主题和关键词筛选会同时作用于两栏。</p><div class="note-foot">纯静态展示 · 无交易功能</div></div></aside>
-      </div>
+      <div id="load-error" class="empty" role="alert" hidden>新闻快照暂时无法加载，请刷新重试。</div>
+      <div id="news-list" class="news-grid"></div>
     </section>
-    <section class="pipeline" aria-label="发布方式"><span class="eyebrow">PUBLISHING MODEL</span><p>dot 生成结果快照 <span>→</span> 独立公开仓库 <span>→</span> GitHub Pages 展示</p><small>当前为人工构造的首版样本。后续由 dot 发布已生成的公开结果；Mac 与 Pages 不运行采集或研究任务。</small></section>
+    <section class="pipeline" aria-label="新闻发布方式"><span class="eyebrow">NEWS SNAPSHOTS</span><p>dot 生成新闻快照 <span>→</span> GitHub Pages <span>→</span> 同事共享阅读</p><small>当前为人工构造的新闻样本。后续发布已生成的公开新闻结果；页面只负责阅读与筛选。</small></section>
   </main>
-  <footer class="shell"><span>KFC / PUBLIC INTELLIGENCE <span class="footer-divider">·</span> 演示 v1</span><a href="https://github.com/searchbb/kfc-public-dashboard" target="_blank" rel="noopener noreferrer">查看公开仓库 ↗</a></footer>
-  <noscript><p class="shell">请启用 JavaScript 以查看与筛选静态演示快照。数据文件：<a href="data/snapshot.json">snapshot.json</a></p></noscript>
+  <footer class="shell"><span>KFC / PUBLIC NEWSROOM <span class="footer-divider">·</span> 新闻演示 v2</span><a href="https://github.com/searchbb/kfc-public-dashboard" target="_blank" rel="noopener noreferrer">查看新闻仓库 ↗</a></footer>
+  <noscript><p class="shell">请启用 JavaScript 以查看与筛选静态新闻快照。数据文件：<a href="data/snapshot.json">snapshot.json</a></p></noscript>
 </body>
 </html>

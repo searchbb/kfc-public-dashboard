@@ -1,35 +1,34 @@
-# KFC Public Dashboard
+# KFC Public Newsroom
 
-Independent public display repository for the KFC public-information dashboard.
+Public news display for the user and colleagues. This repository and its current site contain only news presentation files and a news snapshot.
 
-**Phase 1: fictional demo only.** Every company, symbol, news item, quote, percentage, and sparkline is invented for testing. No live data, private holdings, original news bodies, credentials, database, or raw research exports are included.
+**Phase 1: fictional news demo.** All institutions, events, headlines and summaries are invented for testing. No original article bodies, credentials, database or raw exports are included.
 
 Site: https://searchbb.github.io/kfc-public-dashboard/
 
 ## Publishing
 
-- GitHub Pages, default HTTPS `github.io` domain.
-- Publish `main`, repository root `/`, with `.nojekyll`.
-- Static HTML, CSS, JavaScript and one JSON snapshot; no package installation, custom workflow, new secrets or persistent runner.
-- `data/snapshot.json` contains visible UTC timestamps and demo metadata.
-- Filtering happens locally in the visitor's browser. No collection, market computation or research jobs run on the Mac or on Pages.
+- GitHub Pages: publish `main`, repository root `/`, with `.nojekyll`.
+- Default HTTPS `github.io` domain; no custom domain.
+- Static HTML, CSS, JavaScript and `data/snapshot.json`.
+- No new secrets, custom workflow, installed packages or persistent runner.
+- The browser only loads the same-origin news snapshot and filters displayed news.
+- All resource paths stay under the repository project-site base.
 
-## Intended next phase
+## Future news publisher
 
-dot generates approved public result snapshots upstream and publishes only the display files to this independent repository. A ten-minute publication target is accepted, but no recurring publisher is enabled in this phase. GitHub Pages build/cache propagation is additional and the interval is a target, not a latency guarantee.
+dot generates approved public news snapshots upstream and publishes only these display files. The target interval is ten minutes, with publication only when the news changes. No recurring publisher is enabled in this phase. Pages build/cache propagation adds latency.
 
-The current renderer explicitly requires `mode: fictional_demo`. Before real public snapshots are integrated, review the source allowlist and deliberately update the renderer, mode labels and disclaimers together. Do not silently substitute real data into a fictional demo.
+The renderer currently requires `mode: fictional_demo`. Before connecting real public news, update the renderer mode, labels and disclaimers together. Keep news source attribution and original source links in the reviewed display projection.
 
-## Snapshot contract
+## News snapshot contract
 
-`schema_version`, `mode`, `snapshot_id`, `generated_at`, `publisher`, `target_update_minutes`, `scheduled_publication_enabled`, `disclaimer`, `news[]`, `markets[]`.
+`schema_version`, `mode`, `snapshot_id`, `generated_at`, `publisher`, `target_update_minutes`, `scheduled_publication_enabled`, `disclaimer`, `news[]`.
 
-News: `id`, `category`, `title`, `summary`, `source_label`, `published_at`.
+Each news item contains `id`, `category`, `title`, `summary`, `source_label`, `published_at`.
 
-Market observations: `id`, `symbol`, `name`, `category`, `price`, `change_pct`, `as_of`, `observation`, `sparkline_points` (presentation-only example geometry).
+Snapshot strings render as text nodes, never HTML. No third-party scripts, fonts, analytics, embeds or API calls are used.
 
-The page uses text nodes for snapshot strings and does not interpret them as HTML. No third-party scripts, fonts, analytics, embeds or API calls are used. The only runtime request is the same-origin JSON snapshot.
+## Isolation
 
-## Scope boundary
-
-This repository is separate from the production KFC checkout, its book PR workflow, news/investment services, schedules and existing Cloudflare/Sites projects.
+This is an independent news-display repository. Production KFC programs, book PR workflows, services, schedules and existing Cloudflare/Sites projects are unaffected.

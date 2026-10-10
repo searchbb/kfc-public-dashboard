@@ -36,39 +36,12 @@ function newsCard(item) {
   card.append(meta, element("h4", "", item.title), element("p", "", item.summary), bottom);
   return card;
 }
-function marketCard(item) {
-  const card = element("article", "market-card");
-  const top = element("div", "market-top");
-  const company = element("div", "");
-  company.append(element("div", "symbol", item.symbol), element("div", "company", item.name + " · 虚构"));
-  const quote = element("div", "quote");
-  const negative = item.change_pct < 0;
-  quote.append(element("div", "price", item.price.toFixed(2)), element("div", "change" + (negative ? " negative" : ""), (negative ? "" : "+") + item.change_pct.toFixed(2) + "%"));
-  top.append(company, quote);
-  const bottom = element("div", "market-bottom");
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("class", "spark" + (negative ? " negative" : ""));
-  svg.setAttribute("viewBox", "0 0 100 26");
-  svg.setAttribute("role", "img");
-  svg.setAttribute("aria-label", "虚构走势，仅作视觉示意");
-  const line = document.createElementNS(svg.namespaceURI, "polyline");
-  line.setAttribute("points", item.sparkline_points);
-  svg.append(line);
-  bottom.append(categoryTag(item.category), svg);
-  const time = element("time", "market-time", "样本时点 " + utc(item.as_of, true));
-  time.dateTime = item.as_of;
-  card.append(top, bottom, element("p", "market-observation", item.observation), time);
-  return card;
-}
 function render() {
   if (!state.snapshot) return;
   const news = state.snapshot.news.filter(matches).sort((a, b) => b.published_at.localeCompare(a.published_at));
-  const markets = state.snapshot.markets.filter(matches);
   $("#news-list").replaceChildren(...news.map(newsCard));
-  $("#market-list").replaceChildren(...markets.map(marketCard));
   if (!news.length) $("#news-list").append(element("p", "empty", "没有匹配的新闻样本，请尝试其他主题或关键词。"));
-  if (!markets.length) $("#market-list").append(element("p", "empty", "没有匹配的市场样本。"));
-  $("#result-count").textContent = `显示 ${news.length} 条新闻 · ${markets.length} 个市场样本`;
+  $("#result-count").textContent = `显示 ${news.length} 条新闻 · 最新优先`;
 }
 
 document.querySelectorAll("[data-category]").forEach(button => {
@@ -92,13 +65,15 @@ async function loadSnapshot() {
     const response = await fetch("data/snapshot.json", { cache: "no-store" });
     if (!response.ok) throw new Error("Snapshot unavailable");
     const snapshot = await response.json();
-    if (snapshot.mode !== "fictional_demo" || !Array.isArray(snapshot.news) || !Array.isArray(snapshot.markets)) throw new Error("Invalid demo snapshot");
+    if (snapshot.mode !== "fictional_demo" || !Array.isArray(snapshot.news)) throw new Error("Invalid demo snapshot");
     state.snapshot = snapshot;
     $("#snapshot-time").textContent = utc(snapshot.generated_at);
     $("#snapshot-time").dateTime = snapshot.generated_at;
     $("#snapshot-id").textContent = snapshot.snapshot_id;
     $("#news-total").textContent = String(snapshot.news.length).padStart(2, "0");
-    $("#market-total").textContent = String(snapshot.markets.length).padStart(2, "0");
+    $("#topic-total").textContent = String(new Set(snapshot.news.map(item => item.category)).size).padStart(2, "0");
+    const latest = snapshot.news.map(item => item.published_at).sort().at(-1);
+    $("#latest-time").textContent = latest ? utc(latest, true).replace(" UTC", "") : "—";
     render();
   } catch {
     $("#load-error").hidden = false;
