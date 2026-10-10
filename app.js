@@ -62,7 +62,7 @@ $("#search").addEventListener("input", event => {
 
 async function loadSnapshot() {
   try {
-    const response = await fetch("data/snapshot.json", { cache: "no-store" });
+    const response = await fetch("data/snapshot.json?v=news2", { cache: "no-store" });
     if (!response.ok) throw new Error("Snapshot unavailable");
     const snapshot = await response.json();
     if (snapshot.mode !== "fictional_demo" || !Array.isArray(snapshot.news)) throw new Error("Invalid demo snapshot");
