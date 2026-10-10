@@ -1,0 +1,9 @@
+# 2026年英语词义消歧：当标签成为瓶颈
+url: https://arxiv.org/abs/2609.17554
+
+[p001]
+# 2026年英语词义消歧：当标签成为瓶颈
+
+[p002]
+arXiv:2609.17554v1 Announce Type: new 
+Abstract: In English all-words word sense disambiguation (WSD), the labels, not the models, have become the bottleneck: frontier LLMs are accurate enough that the errors surviving in the gold standard decide benchmark rankings -- in the test sets we score on and, as we show causally, in the corpus we train on. We release lexEN, a WSD evaluation benchmark built as a conservative, human-adjudicated correction layer over Maru2022's ALL_NEW benchmark (211 labels changed, 56 removed), and SenseBench, an auditable LLM WSD evaluation harness and living leaderboard (57 models, 192 runs). The task is inventory-constrained multiple choice (the model picks from the supplied WordNet senses), so the reported accuracies are a ceiling on what models achieve without that help. On lexEN-v1 the frontier LLMs converge near 95% (best, 95.6%), the top three families are statistically indistinguishable, and accuracy trades off against reasoning effort and cost across a ~2,500x price span. Relabeling SemCor with frontier models and retraining BEM, ESCHER, and ConSeC unchanged lifts them by several F1 points on test sets the relabeling never touched; we release the relabeled corpora and Glite LENS, a 298M bi-encoder trained on the repaired labels -- to our knowledge the strongest reported (83.6 Raganato ALL, 87.4 Maru ALL_NEW) -- serving at ~$0.13 per million items. On hard items, fine-grained WordNet senses are partly ill-posed even for experts (three-reviewer Fleiss kappa=0.537); coarsening raises annotator agreement and model accuracy together across four inventories, placing a top model inside the expert agreement band at coarse granularity (statistically equivalent under three of four) but significantly below it at fine. The binding constraint is now cost.
